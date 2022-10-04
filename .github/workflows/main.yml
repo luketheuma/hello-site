@@ -31,12 +31,12 @@ jobs:
       # Login Docker
       - name: Docker login       
         run: |
-          docker login -u ${{env.DOCKER_USERNAME}} -p ${{env.DOCKER_PASSWORD}}
+          docker login -u ${{env.DOCKER_USER}} -p ${{env.DOCKER_PASSWORD}}
       
       # Build Docker image
       - name: Build Docker image
-        run: docker build -f hello-world/Dockerfile . --tag ${{env.DOCKER_USERNAME}}/hello-world:${{env.APP_VERSION}}
+        run: docker build -f hello-world/Dockerfile . --tag ${{env.DOCKER_USER}}/hello-world:${{env.APP_VERSION}}
       
       # Push Docker image to repository
       - name: Push Docker image
-        run: docker push ${{env.DOCKER_USERNAME}}/hello-world:${{env.APP_VERSION}}
+        run: docker push ${{env.DOCKER_USER}}/hello-world:${{env.APP_VERSION}}
